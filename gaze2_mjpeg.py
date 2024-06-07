@@ -2,7 +2,8 @@ import cv2
 from gaze_tracking import GazeTracking
 
 gaze = GazeTracking()
-webcam = cv2.VideoCapture("http://0.0.0.0:8001/video_feed")
+#webcam = cv2.VideoCapture("http://172.17.3.18:8001/video_feed")
+webcam = cv2.VideoCapture(0)
 
 while True:
     # We get a new frame from the webcam
