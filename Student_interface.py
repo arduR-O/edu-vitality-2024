@@ -68,7 +68,7 @@ text_label0.pack(padx=2,pady=2)
 
 
 # Load the image file
-image = PhotoImage(file="C:\\Users\\nikit\\edu-vitality-2024\\Teacher.png")  
+image = PhotoImage(file=".\\Teacher.png")  
 
 # Create a label with the image
 image_label = tk.Label(frame_teacher, image=image)
