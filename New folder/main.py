@@ -169,7 +169,7 @@ while True:
         print(text)
         analysis.append(text)
 
-    print(gaze.vertical_ratio())
+    # print(gaze.vertical_ratio())
     for (x,y,w,h) in faces:
         cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
         # cv2.circle(img,(x,y),min(x+w,y+h),(0,255,0),2)
