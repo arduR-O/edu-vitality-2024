@@ -93,6 +93,41 @@ def detect_faces(img):
 
         return faces,gray
 
+def calculate_attention_score(analysis):
+    # Define weights for each attention level
+    weights = {
+        "Distracted": 0,
+        "Somewhat Focussed": 0.5,
+        "Definitely Focussed Listening": 1
+    }
+    
+    # Count occurrences of each attention level
+    distraction_count = analysis.count("Distracted")
+    somewhat_count = analysis.count("Somewhat Focussed")
+    focused_count = analysis.count("Definitely Focussed Listening")
+    
+    # Calculate total weighted attention
+    total_weighted_attention = (weights["Distracted"] * distraction_count +
+                                weights["Somewhat Focussed"] * somewhat_count +
+                                weights["Definitely Focussed Listening"] * focused_count)
+    
+    # Calculate the total possible attention score
+    total_possible_attention = distraction_count + somewhat_count + focused_count
+    
+    # Calculate and return the attention score in range 0 to 1
+    if total_possible_attention == 0:
+        return 0
+    attention_score = total_weighted_attention / total_possible_attention
+    return attention_score
+
+def is_attentive(attention_score):
+    if(attention_score > 0.7):
+            print("user was attentive")
+    elif(attention_score > 0.5):
+        print("user was somewhat attentive")
+    else:
+        print("user was not attentive")
+
 cap = cv2.VideoCapture(0)
 
 cap.set(3,1280) # set Width
@@ -151,9 +186,12 @@ while True:
         distraction_count = analysis.count("Distracted")
         somewhat_count = analysis.count("Somewhat Focussed")
         focused_count = analysis.count("Definitely Focussed Listening")
+        attention_score = calculate_attention_score(analysis)
         print("Distracted for : ",0.3*distraction_count,"secs")
         print("Somewhat focused for : ",0.3*somewhat_count,"secs")
         print("Fully focused for : ",0.3*focused_count,"secs")
+        print("attention score : ",attention_score)
+        is_attentive(attention_score)
         break
 cap.release()
 cv2.destroyAllWindows()
