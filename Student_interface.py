@@ -53,43 +53,47 @@ gradient_canvas = tk.Canvas(root, width=screen_width, height=screen_height)
 gradient_canvas.grid(row=0, column=0, columnspan=2, rowspan=1, sticky='nsew')
 create_gradient(gradient_canvas, screen_width, screen_height, '#1A1919', '#5A5656')
 
+#Frame big
+frame_big = tk.Frame(root,bg = "lightblue",height = 1090,width=1395)
+frame_big.place(x=0,y=0)
+frame_big.grid(row=0,column=0)
 
-frame_big = tk.Frame(root,bg = "white")
-frame_big.grid(row = 0,column=0)
-
+  
 #Frame for teacher's screen
-frame_teacher = tk.Frame(root,bg = "white",width=300,height=400)
+frame_teacher = tk.Frame(root,bg = "white",height=600,width=700)
 frame_teacher.grid(row = 0,column=0)
 text_label0 = tk.Label(frame_teacher,text="Teacher's screen", font=("Arial", 12), bg="black", fg="white")
 text_label0.pack_propagate(0)
-#text_label0.pack(padx=2,pady=2)
+text_label0.pack(padx=2,pady=2)
 
 
 # Load the image file
-#image = PhotoImage(file="C:\\Users\\nikit\\Downloads\\Symbol.png")  
+image = PhotoImage(file="C:\\Users\\nikit\\edu-vitality-2024\\Teacher.png")  
 
 # Create a label with the image
-#image_label = tk.Label(frame_big, image=image,width=50,height=50)
-#image_label.pack()
+image_label = tk.Label(frame_teacher, image=image)
+image_label.pack()
 
 
 
 #Frame for questions from teacher
 frame_top = tk.Frame(root,bg="lightgrey",height = 500)
-frame_top.grid(row = 0,column = 1,padx =10,pady = 10,sticky = 'nsew')
+frame_top.grid(row = 0,column = 1,padx =10,sticky = 'nsew')
 
 # Add text to the frame
-text_label = tk.Label(frame_top, text="Questions", font=("Arial", 12), bg="black", fg="white")
+text_label = tk.Label(frame_top, text=" Questions ", font=("Arial", 12), bg="black", fg="white")
 text_label.pack(padx=20, pady=20)
 
 
 
 # Frame for chat box and entry
 frame = tk.Frame(root,bg="#1A1919",height = 500)
-frame.grid(row=0, column=1, padx=10, pady=300, sticky='nsew')
+frame.grid(row=0, column=1, padx=10, pady=300,sticky = 'nsew')
+#frame.place(x=1350,y=400)
 # Add text to the frame
 text_label1 = tk.Label(frame, text="Chat Window", font=("Arial", 12), bg="black", fg="white")
 text_label1.pack(padx=20, pady=20)
+
 
 
 # ScrolledText widget for chat box
